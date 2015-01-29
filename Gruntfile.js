@@ -117,6 +117,8 @@ module.exports = function(grunt) {
 
     // enable plugins
 
+    grunt.loadNpmTasks('grunt-contrib-connect');
+
     // set default tasks to run when grunt is called without parameters
     // http://gruntjs.com/api/grunt.task
     grunt.registerTask('default', ['concat', 'jsbeautifier', 'htmlhint', 'jshint', 'uglify']);

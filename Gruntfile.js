@@ -112,7 +112,18 @@ module.exports = function(grunt) {
                 pushTo: 'upstream',
                 gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d'
             }
-        }
+        },
+        connect: {
+    server: {
+/*
+      options: {
+        port: 9001,
+        base: 'www-root'
+      }
+*/
+ uses_defaults: {}
+    }
+  }  
     });
 
     // enable plugins

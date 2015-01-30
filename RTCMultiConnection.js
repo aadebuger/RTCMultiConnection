@@ -2452,6 +2452,7 @@ NEW/Breaking changes:
         // www.RTCMultiConnection.org/docs/openSignalingChannel/
         // http://goo.gl/uvoIcZ
         connection.openSignalingChannel = function(config) {
+            console.log("openSignalingChannel")
             // make sure firebase.js is loaded
             if (!window.Firebase) {
                 return loadScript(connection.resources.firebase, function() {
@@ -2469,12 +2470,14 @@ NEW/Breaking changes:
             var firebase = new window.Firebase(connection.resources.firebaseio + channel);
             firebase.channel = channel;
             firebase.on('child_added', function(data) {
+                console.log("onmessage")
                 config.onmessage(data.val());
             });
 
             firebase.send = function(data) {
                 // a quick dirty workaround to make sure firebase
                 // shouldn't fail for NULL values.
+                console.log("firebase send");
                 for (var prop in data) {
                     if (isNull(data[prop]) || typeof data[prop] === 'function') {
                         data[prop] = false;
